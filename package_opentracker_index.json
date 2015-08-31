@@ -12,7 +12,7 @@
         {
           "name": "OpenTracker Boards (32-bits ARM Cortex-M3)",
           "architecture": "sam",
-          "version": "1.0.0",
+          "version": "1.0.1",
           "category": "Contributed",
           "url": "https://github.com/geolink/opentracker-arduino-board/releases/download/v1.0.0/sam-1.6.4-opentracker-1.0.0.tar.bz2",
           "archiveFileName": "sam-1.6.4-opentracker-1.0.0.tar.bz2",
@@ -74,6 +74,20 @@
           "name": "bossac",
           "version": "1.4-opentracker",
           "systems": [
+            {
+              "host": "i686-linux-gnu",
+              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.4-opentracker/bossac-1.4-opentracker-i686-linux-gnu.tar.bz2",
+              "archiveFileName": "bossac-1.4-opentracker-i686-linux-gnu.tar.bz2",
+              "checksum": "SHA-256:eea8b72a57097b9a33ae6c88114dc6736f420343b633dc388ffbd199fa8cdea5",
+              "size": "29570"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.4-opentracker/bossac-1.4-opentracker-x86_64-pc-linux-gnu.tar.bz2",
+              "archiveFileName": "bossac-1.4-opentracker-x86_64-pc-linux-gnu.tar.bz2",
+              "checksum": "SHA-256:f87267b2d8f2cb6782c5472609bbcd204eb3306451e2c7e5f48af7dcb2f9225c",
+              "size": "29848"
+            },
             {
               "host": "i686-mingw32",
               "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.4-opentracker/bossac-1.4-opentracker-i686-mingw32.tar.bz2",
