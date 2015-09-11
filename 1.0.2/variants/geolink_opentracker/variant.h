@@ -220,8 +220,8 @@ static const uint8_t CANTX = 33;
 #define PIN_C_PWR_GSM   25
 #define PIN_RESET_GPS   26
 #define PIN_STANDBY_GPS 27
-#define PIN_EXT_IN2     28
-#define PIN_EXT_IN1     29
+#define PIN_EXT_IN1     28
+#define PIN_EXT_IN2     29
 #define PIN_EXT_PA22    30
 #define PIN_EXT_PA23    31
 #define PIN_CANRX       32
@@ -233,8 +233,8 @@ static const uint8_t CANTX = 33;
 
 #define ANALOG_VREF     3.4f
 #define AIN_S_INLEVEL   47
-#define AIN_EXT_IN2     28
-#define AIN_EXT_IN1     29
+#define AIN_EXT_IN1     28
+#define AIN_EXT_IN2     29
 #define AIN_EXT_PA22    30
 #define AIN_EXT_PA23    31
 
