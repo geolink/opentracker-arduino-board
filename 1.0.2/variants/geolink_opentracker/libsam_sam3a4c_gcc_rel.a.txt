@@ -50,7 +50,7 @@ adc.o:
 
 usart.o:
          U __assert_func
-00000000 r __func__.6608
+00000000 r __func__.6610
 00000000 T USART_Configure
 00000000 T USART_DisableIt
 00000000 T USART_EnableIt
@@ -124,9 +124,9 @@ timetick.o:
 
 rtc.o:
          U __assert_func
-00000000 r __func__.6330
-00000000 r __func__.6339
-00000000 r __func__.6344
+00000000 r __func__.6332
+00000000 r __func__.6341
+00000000 r __func__.6346
 00000000 T RTC_ClearSCCR
 00000000 T RTC_DisableIt
 00000000 T RTC_EnableIt
@@ -142,14 +142,14 @@ rtc.o:
 
 pwmc.o:
          U __assert_func
-00000000 r __func__.6333
-00000000 r __func__.6344
-00000000 r __func__.6359
-00000000 r __func__.6370
-00000000 r __func__.6381
-00000000 r __func__.6388
-00000000 r __func__.6472
-00000000 r __func__.6478
+00000000 r __func__.6335
+00000000 r __func__.6346
+00000000 r __func__.6361
+00000000 r __func__.6372
+00000000 r __func__.6383
+00000000 r __func__.6390
+00000000 r __func__.6474
+00000000 r __func__.6480
 00000000 t FindClockConfiguration
 00000000 T PWMC_ConfigureChannel
 00000000 T PWMC_ConfigureChannelExt
@@ -354,7 +354,7 @@ efc.o:
 00000000 T efc_set_flash_access_mode
 00000000 T efc_set_wait_state
 00000068 T efc_write_fmr
-00000000 b iap_perform_command.6589
+00000000 b iap_perform_command.6591
 
 spi.o:
          U pmc_enable_periph_clk
@@ -386,23 +386,25 @@ pio.o:
 
 twi.o:
          U __assert_func
-00000000 r __func__.6691
-00000000 r __func__.6697
-00000000 r __func__.6715
-00000000 r __func__.6719
+00000000 r __func__.6693
+00000000 r __func__.6699
+00000000 r __func__.6714
+00000000 r __func__.6718
 00000000 r __func__.6726
-00000000 r __func__.6730
-00000000 r __func__.6735
-00000000 r __func__.6743
-00000000 r __func__.6757
-00000000 r __func__.6762
-00000000 r __func__.6766
-00000000 r __func__.6771
-00000000 r __func__.6775
+00000000 r __func__.6733
+00000000 r __func__.6737
+00000000 r __func__.6742
+00000000 r __func__.6750
+00000000 r __func__.6764
+00000000 r __func__.6769
+00000000 r __func__.6773
+00000000 r __func__.6778
+00000000 r __func__.6782
 00000000 T TWI_ByteReceived
 00000000 T TWI_ByteSent
 00000000 T TWI_ConfigureMaster
 00000000 T TWI_ConfigureSlave
+00000000 T TWI_Disable
 00000000 T TWI_DisableIt
 00000000 T TWI_EnableIt
 00000000 T TWI_GetMaskedStatus
@@ -456,8 +458,8 @@ uotghs_device.o:
 
 rtt.o:
          U __assert_func
-00000000 r __func__.6337
-00000000 r __func__.6345
+00000000 r __func__.6339
+00000000 r __func__.6347
 00000000 T RTT_EnableIT
 00000000 T RTT_GetStatus
 00000000 T RTT_GetTime
@@ -469,9 +471,9 @@ interrupt_sam_nvic.o:
 
 tc.o:
          U __assert_func
-00000000 r __func__.6332
-00000000 r __func__.6338
-00000000 r __func__.6344
+00000000 r __func__.6334
+00000000 r __func__.6340
+00000000 r __func__.6346
 00000000 T TC_Configure
 00000000 T TC_FindMckDivisor
 00000000 T TC_GetStatus
