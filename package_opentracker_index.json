@@ -12,12 +12,12 @@
         {
           "name": "OpenTracker Boards (32-bits ARM Cortex-M3)",
           "architecture": "sam",
-          "version": "1.0.1",
+          "version": "1.0.2",
           "category": "Contributed",
-          "url": "https://github.com/geolink/opentracker-arduino-board/releases/download/v1.0.0/sam-1.6.4-opentracker-1.0.0.tar.bz2",
-          "archiveFileName": "sam-1.6.4-opentracker-1.0.0.tar.bz2",
-          "checksum": "SHA-256:cc9d5c605c569128af4c5839966a7ef1fbcfa33f138889d34cabbf05f4e0b4ec",
-          "size": "2845509",
+          "url": "https://github.com/geolink/opentracker-arduino-board/releases/download/v1.0.2/sam-1.6.6-opentracker-1.0.2.tar.bz2",
+          "archiveFileName": "sam-1.6.6-opentracker-1.0.2.tar.bz2",
+          "checksum": "SHA-256:3fd207012b704800a97289ea87c0dee1ecb096d722a4ec36ef999ab9761d24aa",
+          "size": "2864704",
           "boards": [
             {"name": "GeoLink OpenTracker"}
           ],
@@ -94,6 +94,13 @@
               "archiveFileName": "bossac-1.4-opentracker-i686-mingw32.tar.bz2",
               "checksum": "SHA-256:c197ab61cd073e2a41e9ffc608482998616fc0d8db1978e6c2e491858c8bce40",
               "size": "213711"
+            },
+            {
+              "host": "i686-apple-darwin10",
+              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.4-opentracker/bossac-1.4-opentracker-i686-apple-darwin10.tar.gz",
+              "archiveFileName": "bossac-1.4-opentracker-i686-apple-darwin10.tar.gz",
+              "checksum": "SHA-256:c15dac7cd8a31ef0c85d5b59282dca8d02d81013409a18f7e7deb83778ac367f",
+              "size": "66743"
             }
           ]
         }
