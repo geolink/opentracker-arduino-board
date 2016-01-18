@@ -3,7 +3,7 @@
 Works with Arduino IDEs version 1.6.x and later (tested with 1.6.4)
 
 Open the menu "File" > "Preferences" and add the following text to the box "Additional Boards Manager URLs":
-https://cdn.rawgit.com/geolink/opentracker-arduino-board/master/package_opentracker_index.json
+https://raw.githubusercontent.com/geolink/opentracker-arduino-board/master/package_opentracker_index.json
 
 **NOTE**
 The link points to the package description file in the "master" branch, that may include new releases in the future.
