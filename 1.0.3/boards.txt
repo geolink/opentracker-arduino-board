@@ -30,3 +30,9 @@ geolink_opentracker.menu.HWVersion.ver_2_4=OpenTracker 2.4
 geolink_opentracker.menu.HWVersion.ver_2_4.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags} -DOPENTRACKER_HW_REV=0x0240
 geolink_opentracker.menu.HWVersion.ver_2_3=OpenTracker 2.3
 geolink_opentracker.menu.HWVersion.ver_2_3.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags} -DOPENTRACKER_HW_REV=0x0230
+
+menu.SecureBit=Flash Security
+geolink_opentracker.menu.SecureBit.disabled=Unlocked
+geolink_opentracker.menu.SecureBit.disabled.upload.tool=bossac
+geolink_opentracker.menu.SecureBit.enabled=SecureBit
+geolink_opentracker.menu.SecureBit.enabled.upload.tool=bossac_secure
