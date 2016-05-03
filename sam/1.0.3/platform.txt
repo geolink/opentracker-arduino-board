@@ -101,3 +101,11 @@ tools.bossac.upload.params.verbose=-i -d
 tools.bossac.upload.params.quiet=
 tools.bossac.upload.pattern="{path}/{cmd}" {upload.verbose} --port={serial.port.file} -U {upload.native_usb} -e -w -v -b "{build.path}/{build.project_name}.bin" -R
 
+tools.bossac_secure.path={runtime.tools.bossac-1.4-opentracker.path}
+tools.bossac_secure.cmd=bossac
+tools.bossac_secure.cmd.windows=bossac.exe
+
+tools.bossac_secure.upload.params.verbose=-i -d
+tools.bossac_secure.upload.params.quiet=
+tools.bossac_secure.upload.pattern="{path}/{cmd}" {upload.verbose} --port={serial.port.file} -U {upload.native_usb} -e -w -v -b "{build.path}/{build.project_name}.bin" -s -R
+
