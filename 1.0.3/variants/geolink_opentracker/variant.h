@@ -15,9 +15,14 @@
   License along with this library; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+#pragma once
+
+#ifndef _VARIANT_OPENTRACKER_
+#define _VARIANT_OPENTRACKER_
 
 #ifndef _VARIANT_ARDUINO_DUE_X_
-#define _VARIANT_ARDUINO_DUE_X_
+#define _VARIANT_ARDUINO_DUE_X_ // for compatibility (required?)
+#endif
 
 /*----------------------------------------------------------------------------
  *        Definitions
@@ -55,8 +60,8 @@ extern "C"{
  *----------------------------------------------------------------------------*/
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (38u)
-#define NUM_DIGITAL_PINS     (28u)
+#define PINS_COUNT           (40u)
+#define NUM_DIGITAL_PINS     (40u)
 #define NUM_ANALOG_INPUTS    (5u)
 
 #define digitalPinToPort(P)        ( g_APinDescription[P].pPort )
@@ -86,8 +91,8 @@ extern "C"{
 #define SPI_INTERFACE_ID     ID_SPI0
 #define SPI_CHANNELS_NUM 3
 #define PIN_SPI_SS0          (37u)
-#define PIN_SPI_SS1          (45u)
-#define PIN_SPI_SS2          (44u)
+#define PIN_SPI_SS1          (47u)
+#define PIN_SPI_SS2          (46u)
 #define PIN_SPI_MOSI         (35u)
 #define PIN_SPI_MISO         (34u)
 #define PIN_SPI_SCK          (36u)
@@ -126,18 +131,18 @@ static const uint8_t SCK  = PIN_SPI_SCK;
  * UART/USART Interfaces
  */
 // Serial
-#define PINS_UART            (39u)
+#define PINS_UART            (41u)
 // Serial1
-#define PINS_USART0          (40u)
+#define PINS_USART0          (42u)
 // Serial2
-#define PINS_USART1          (41u)
+#define PINS_USART1          (43u)
 // Serial3
-#define PINS_USART3          (42u)
+#define PINS_USART3          (44u)
 
 /*
  * USB Interfaces
  */
-#define PINS_USB             (43u)
+#define PINS_USB             (45u)
 
 /*
  * Analog pins
@@ -146,14 +151,14 @@ static const uint8_t A2  = 31;
 static const uint8_t A3  = 30;
 static const uint8_t A5  = 28;
 static const uint8_t A6  = 29;
-static const uint8_t A8  = 47;
-static const uint8_t DAC1 = 46;
+static const uint8_t A8  = 49;
+static const uint8_t DAC1 = 48;
 static const uint8_t CANRX = 32;
 static const uint8_t CANTX = 33;
 #define ADC_RESOLUTION		12
 
 // CAN0
-#define PINS_CAN0            (48u)
+#define PINS_CAN0            (50u)
 // no enable pin (due_can compatibility)
 #define CAN0_EN	255
 
@@ -196,7 +201,6 @@ static const uint8_t CANTX = 33;
 #define PIN_EXT_TX      1
 #define PIN_S_PPS_GPS   2
 #define PIN_S_DETECT    3
-#define PIN_C_REBOOT    4
 #define PIN_C_KILL_GSM  5
 #define PIN_EXT_PA21    6
 #define PIN_EXT_PA20    7
@@ -214,9 +218,21 @@ static const uint8_t CANTX = 33;
 #define PIN_RX0_GPS     19
 #define PIN_EXT_SDA     20
 #define PIN_EXT_SCL     21
-#define PIN_RING_GSM    22
 #define PIN_WAKE_GSM    23
+#if !defined(OPENTRACKER_HW_REV) || (OPENTRACKER_HW_REV < 0x0240)
+// HW Revision 2.3 (and earlier)
+#define PIN_C_REBOOT    4
+#define PIN_RING_GSM    22
 #define PIN_GSM_VDD_EXT 24
+#else
+// HW Revision 2.4
+// dropped "REBOOT" pin and "GSM VDD" (unused)
+// moved "RING" to wakeup capable pins
+// added "INx_PD" pull-down enable pins, to change analog input range
+#define PIN_RING_GSM    24
+#define PIN_C_IN1_PD    38
+#define PIN_C_IN2_PD    39
+#endif
 #define PIN_C_PWR_GSM   25
 #define PIN_RESET_GPS   26
 #define PIN_STANDBY_GPS 27
@@ -232,7 +248,7 @@ static const uint8_t CANTX = 33;
 #define PIN_EXT_NS0     37
 
 #define ANALOG_VREF     3.4f
-#define AIN_S_INLEVEL   47
+#define AIN_S_INLEVEL   49
 #define AIN_EXT_IN1     28
 #define AIN_EXT_IN2     29
 #define AIN_EXT_PA22    30
@@ -276,5 +292,5 @@ extern USARTClass Serial3;
 #define SERIAL_PORT_HARDWARE2       Serial2
 #define SERIAL_PORT_HARDWARE3       Serial3
 
-#endif /* _VARIANT_ARDUINO_DUE_X_ */
+#endif /* _VARIANT_OPENTRACKER_ */
 

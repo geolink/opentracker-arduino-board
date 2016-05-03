@@ -187,38 +187,42 @@ extern const PinDescription g_APinDescription[]=
   // 37 - SPI CS0
   { PIOA, PIO_PA28A_SPI0_NPCS0,ID_PIOA,PIO_PERIPH_A,PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // NPCS0
 
-  // 38 - End of standard pins -----
+  // 38
+  { PIOA, PIO_PA18A_TWCK0,   ID_PIOA, PIO_OUTPUT_0, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 49 = C_IN1_PD
+  { PIOA, PIO_PA19,          ID_PIOA, PIO_OUTPUT_0, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 50 = C_IN2_PD
 
-  // 38 .. 42 - "All pins" masks
+  // 40 - End of standard pins -----
 
-  // 38 - TWI1 all pins
+  // 40 .. 44 - "All pins" masks
+
+  // 40 - TWI1 all pins
   { PIOB, PIO_PB12A_TWD1|PIO_PB13A_TWCK1, ID_PIOB, PIO_PERIPH_A, PIO_DEFAULT, (PIN_ATTR_DIGITAL|PIN_ATTR_COMBO), NO_ADC, NO_ADC, NOT_ON_PWM, NOT_ON_TIMER },
-  // 39 - UART (Serial) all pins
+  // 41 - UART (Serial) all pins
   { PIOA, PIO_PA8A_URXD|PIO_PA9A_UTXD, ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT, (PIN_ATTR_DIGITAL|PIN_ATTR_COMBO), NO_ADC, NO_ADC, NOT_ON_PWM, NOT_ON_TIMER },
-  // 40 - USART0 (Serial1) all pins
+  // 42 - USART0 (Serial1) all pins
   { PIOA, PIO_PA11A_TXD0|PIO_PA10A_RXD0, ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT, (PIN_ATTR_DIGITAL|PIN_ATTR_COMBO), NO_ADC, NO_ADC, NOT_ON_PWM, NOT_ON_TIMER },
-  // 41 - USART1 (Serial2) all pins
+  // 43 - USART1 (Serial2) all pins
   { PIOA, PIO_PA13A_TXD1|PIO_PA12A_RXD1, ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT, (PIN_ATTR_DIGITAL|PIN_ATTR_COMBO), NO_ADC, NO_ADC, NOT_ON_PWM, NOT_ON_TIMER },
-  // 42 - USART3 (Serial3) all pins
+  // 44 - USART3 (Serial3) all pins
   { PIOB, PIO_PB20A_TXD2|PIO_PB21A_RXD2, ID_PIOB, PIO_PERIPH_B, PIO_DEFAULT, (PIN_ATTR_DIGITAL|PIN_ATTR_COMBO), NO_ADC, NO_ADC, NOT_ON_PWM, NOT_ON_TIMER },
 
-  // 43 - USB
+  // 45 - USB
   { PIOB, PIO_PB11A_UOTGID|PIO_PB10A_UOTGVBOF, ID_PIOB, PIO_PERIPH_A, PIO_DEFAULT, PIN_ATTR_DIGITAL,NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // ID - VBOF
 
-  // 44 - SPI CS2 (alias)
+  // 46 - SPI CS2 (alias)
   { PIOB, PIO_PB21B_SPI0_NPCS2, ID_PIOB, PIO_PERIPH_B, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // NPCS2
 
-  // 45 - SPI CS1 (alias)
+  // 47 - SPI CS1 (alias)
   { PIOB, PIO_PB20B_SPI0_NPCS1, ID_PIOB, PIO_PERIPH_B, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // NPCS1
 
-  // 46 - DAC1 (alias)
+  // 48 - DAC1 (alias)
   { PIOB, PIO_PB16X1_DAC1,   ID_PIOB, PIO_INPUT,    PIO_DEFAULT, PIN_ATTR_ANALOG,                   ADC13,  DA1,    NOT_ON_PWM,  NOT_ON_TIMER }, // DAC1
 
-  // 47 - Analog (alias)
+  // 49 - Analog (alias)
   { PIOB, PIO_PB17X1_AD10,   ID_PIOB, PIO_INPUT,    PIO_DEFAULT, PIN_ATTR_ANALOG,                   ADC8,   ADC10,  NOT_ON_PWM,  NOT_ON_TIMER }, // AD8 = S_INLEVEL
 
-  // 48 ..  - "All CAN pins" masks
-  // 48 - CAN0 all pins
+  // 50 ..  - "All CAN pins" masks
+  // 50 - CAN0 all pins
   { PIOA, PIO_PA1A_CANRX0|PIO_PA0A_CANTX0, ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT, (PIN_ATTR_DIGITAL|PIN_ATTR_COMBO), NO_ADC,  NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER },
 
   // END
@@ -319,7 +323,22 @@ void init( void )
 
   // Disable pull-up on every pin
   for (unsigned i = 0; i < PINS_COUNT; i++)
-	  digitalWrite(i, LOW);
+  {
+    switch (i)
+    {
+    case -1: //fake
+#ifdef PIN_C_IN1_PD
+    case PIN_C_IN1_PD: // 36V input range, for compatibility
+#endif
+#ifdef PIN_C_IN2_PD
+    case PIN_C_IN2_PD: // 36V input range, for compatibility
+#endif
+      digitalWrite(i, HIGH);
+      break;
+    default:
+      digitalWrite(i, LOW);
+    }
+  }
 
   // Enable parallel access on PIO output data registers
   PIOA->PIO_OWER = 0xFFFFFFFF;
