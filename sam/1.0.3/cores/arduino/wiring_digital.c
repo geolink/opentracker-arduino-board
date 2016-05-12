@@ -22,6 +22,8 @@
  extern "C" {
 #endif
 
+extern uint8_t pinEnabled[PINS_COUNT];
+
 extern void pinMode( uint32_t ulPin, uint32_t ulMode )
 {
 	if ( g_APinDescription[ulPin].ulPinType == PIO_NOT_A_PIN )
@@ -39,6 +41,7 @@ extern void pinMode( uint32_t ulPin, uint32_t ulMode )
             	PIO_INPUT,
             	g_APinDescription[ulPin].ulPin,
             	0 ) ;
+            pinEnabled[ulPin] = 0;
         break ;
 
         case INPUT_PULLUP:
@@ -49,6 +52,7 @@ extern void pinMode( uint32_t ulPin, uint32_t ulMode )
             	PIO_INPUT,
             	g_APinDescription[ulPin].ulPin,
             	PIO_PULLUP ) ;
+            pinEnabled[ulPin] = 0;
         break ;
 
         case OUTPUT:
@@ -57,6 +61,7 @@ extern void pinMode( uint32_t ulPin, uint32_t ulMode )
             	PIO_OUTPUT_1,
             	g_APinDescription[ulPin].ulPin,
             	g_APinDescription[ulPin].ulPinConfiguration ) ;
+            pinEnabled[ulPin] = 0;
 
             /* if all pins are output, disable PIO Controller clocking, reduce power consumption */
             if ( g_APinDescription[ulPin].pPort->PIO_OSR == 0xffffffff )
