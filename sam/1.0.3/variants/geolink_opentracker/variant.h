@@ -237,7 +237,8 @@ static const uint8_t CANTX = 33;
 #define PIN_C_REBOOT    4
 #define PIN_RING_GSM    22
 #define PIN_GSM_VDD_EXT 24
-#define ANALOG_VREF     3.4f
+#define ANALOG_VREF     3.400f
+#define MODEM_VBAT      4.133f
 #else
 // HW Revision 2.4
 // dropped "REBOOT" pin and "GSM VDD" (unused)
@@ -247,6 +248,7 @@ static const uint8_t CANTX = 33;
 #define PIN_C_IN1_PD    38
 #define PIN_C_IN2_PD    39
 #define ANALOG_VREF     3.307f
+#define MODEM_VBAT      4.360f
 #endif
 
 #define AIN_S_INLEVEL   49
