@@ -30,7 +30,6 @@ extern void pinMode( uint32_t ulPin, uint32_t ulMode )
     {
         return ;
     }
-
 	switch ( ulMode )
     {
         case INPUT:
@@ -72,6 +71,10 @@ extern void pinMode( uint32_t ulPin, uint32_t ulMode )
 
         default:
         break ;
+    }
+	if ( g_APinDescription[ulPin].ulADCChannelNumber != NO_ADC )
+    {
+        adc_disable_channel(ADC, g_APinDescription[ulPin].ulADCChannelNumber);
     }
 }
 
