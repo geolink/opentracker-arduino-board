@@ -136,7 +136,7 @@ extern const PinDescription g_APinDescription[]=
   { PIOA, PIO_PA20B_PWML2,   ID_PIOA, PIO_PERIPH_B, PIO_DEFAULT, (PIN_ATTR_DIGITAL|PIN_ATTR_PWM),   NO_ADC, NO_ADC, PWM_CH2,     NOT_ON_TIMER }, // PWML2
 
   // 8
-  { PIOB, PIO_PB17,          ID_PIOB, PIO_OUTPUT_0, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 8 = S_INLEVEL
+  { PIOB, PIO_PB17,          ID_PIOB, PIO_INPUT,    PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 8 = S_INLEVEL
   { PIOB, PIO_PB16,          ID_PIOB, PIO_OUTPUT_0, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 9 = CAN_RS
   { PIOB, PIO_PB18,          ID_PIOB, PIO_OUTPUT_0, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 10 = C_OUT_1
   { PIOB, PIO_PB19,          ID_PIOB, PIO_OUTPUT_0, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 11 = C_OUT_2
@@ -176,8 +176,8 @@ extern const PinDescription g_APinDescription[]=
   { PIOA, PIO_PA23X1_AD5,    ID_PIOA, PIO_INPUT,    PIO_DEFAULT, PIN_ATTR_ANALOG,                   ADC2,   ADC5,   NOT_ON_PWM,  NOT_ON_TIMER }, // AD2 = EXT_PA23
 
   // 32/33 - CANRX0/CANTX0
-  { PIOA, PIO_PA1A_CANRX0,   ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  ADC14,  NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // CANRX
-  { PIOA, PIO_PA0A_CANTX0,   ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  ADC15,  NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // CANTX
+  { PIOA, PIO_PA1A_CANRX0,   ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // CANRX
+  { PIOA, PIO_PA0A_CANTX0,   ID_PIOA, PIO_PERIPH_A, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // CANTX
 
   // 34/35/36 - SPI
   { PIOA, PIO_PA25A_SPI0_MISO,ID_PIOA,PIO_PERIPH_A, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // MISO
@@ -188,8 +188,8 @@ extern const PinDescription g_APinDescription[]=
   { PIOA, PIO_PA28A_SPI0_NPCS0,ID_PIOA,PIO_PERIPH_A,PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // NPCS0
 
   // 38
-  { PIOA, PIO_PA18A_TWCK0,   ID_PIOA, PIO_OUTPUT_0, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 49 = C_IN1_PD
-  { PIOA, PIO_PA19,          ID_PIOA, PIO_OUTPUT_0, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 50 = C_IN2_PD
+  { PIOA, PIO_PA18A_TWCK0,   ID_PIOA, PIO_OUTPUT_1, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 49 = C_IN1_PD
+  { PIOA, PIO_PA19,          ID_PIOA, PIO_OUTPUT_1, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // PIN 50 = C_IN2_PD
 
   // 40 - End of standard pins -----
 
@@ -216,7 +216,7 @@ extern const PinDescription g_APinDescription[]=
   { PIOB, PIO_PB20B_SPI0_NPCS1, ID_PIOB, PIO_PERIPH_B, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // NPCS1
 
   // 48 - DAC1 (alias)
-  { PIOB, PIO_PB16X1_DAC1,   ID_PIOB, PIO_INPUT,    PIO_DEFAULT, PIN_ATTR_ANALOG,                   ADC13,  DA1,    NOT_ON_PWM,  NOT_ON_TIMER }, // DAC1
+  { PIOB, PIO_PB16X1_DAC1,   ID_PIOB, PIO_INPUT,    PIO_DEFAULT, PIN_ATTR_ANALOG,                   NO_ADC, DA1,    NOT_ON_PWM,  NOT_ON_TIMER }, // DAC1
 
   // 49 - Analog (alias)
   { PIOB, PIO_PB17X1_AD10,   ID_PIOB, PIO_INPUT,    PIO_DEFAULT, PIN_ATTR_ANALOG,                   ADC8,   ADC10,  NOT_ON_PWM,  NOT_ON_TIMER }, // AD8 = S_INLEVEL
@@ -321,23 +321,14 @@ void init( void )
   // Initialize C library
   __libc_init_array();
 
-  // Disable pull-up on every pin
+  // Initialize every pin
   for (unsigned i = 0; i < PINS_COUNT; i++)
   {
-    switch (i)
-    {
-    case -1: //fake
-#ifdef PIN_C_IN1_PD
-    case PIN_C_IN1_PD: // 36V input range, for compatibility
-#endif
-#ifdef PIN_C_IN2_PD
-    case PIN_C_IN2_PD: // 36V input range, for compatibility
-#endif
-      digitalWrite(i, HIGH);
-      break;
-    default:
-      digitalWrite(i, LOW);
-    }
+    PIO_Configure(
+      g_APinDescription[i].pPort,
+      g_APinDescription[i].ulPinType,
+      g_APinDescription[i].ulPin,
+      g_APinDescription[i].ulPinConfiguration);
   }
 
   // Enable parallel access on PIO output data registers
@@ -350,7 +341,6 @@ void init( void )
     g_APinDescription[PINS_UART].ulPinType,
     g_APinDescription[PINS_UART].ulPin,
     g_APinDescription[PINS_UART].ulPinConfiguration);
-  digitalWrite(0, HIGH); // Enable pullup for RX0
   PIO_Configure(
     g_APinDescription[PINS_USART0].pPort,
     g_APinDescription[PINS_USART0].ulPinType,
