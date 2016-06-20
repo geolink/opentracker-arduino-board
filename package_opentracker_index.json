@@ -16,8 +16,8 @@
           "category": "Contributed",
           "url": "https://github.com/geolink/opentracker-arduino-board/releases/download/v1.0.3/sam-1.6.6-opentracker-1.0.3.tar.bz2",
           "archiveFileName": "sam-1.6.6-opentracker-1.0.3.tar.bz2",
-          "checksum": "SHA-256:c183c3334e2867d9bf53b31fef24a70fb44d0917cd16d06eedb5e198883ef60e",
-          "size": "2861831",
+          "checksum": "SHA-256:c6522d614bca3f67e407347be7704a750f4aa85a2d1226278f0e3c391e87b39a",
+          "size": "2863965",
           "boards": [
             {"name": "GeoLink OpenTracker"}
           ],
