@@ -191,7 +191,7 @@ static void TC_SetCMR_ChannelB(Tc *tc, uint32_t chan, uint32_t v)
 }
 
 static uint8_t PWMEnabled = 0;
-static uint8_t pinEnabled[PINS_COUNT];
+/*static*/ uint8_t pinEnabled[PINS_COUNT];
 static uint8_t TCChanEnabled[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
 void analogOutputInit(void) {

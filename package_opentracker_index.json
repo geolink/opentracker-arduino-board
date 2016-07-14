@@ -12,12 +12,12 @@
         {
           "name": "OpenTracker Boards (32-bits ARM Cortex-M3)",
           "architecture": "sam",
-          "version": "1.0.2",
+          "version": "1.0.3",
           "category": "Contributed",
-          "url": "https://github.com/geolink/opentracker-arduino-board/releases/download/v1.0.2/sam-1.6.6-opentracker-1.0.2.tar.bz2",
-          "archiveFileName": "sam-1.6.6-opentracker-1.0.2.tar.bz2",
-          "checksum": "SHA-256:3fd207012b704800a97289ea87c0dee1ecb096d722a4ec36ef999ab9761d24aa",
-          "size": "2864704",
+          "url": "https://github.com/geolink/opentracker-arduino-board/releases/download/v1.0.3/sam-1.6.6-opentracker-1.0.3.tar.bz2",
+          "archiveFileName": "sam-1.6.6-opentracker-1.0.3.tar.bz2",
+          "checksum": "SHA-256:c6522d614bca3f67e407347be7704a750f4aa85a2d1226278f0e3c391e87b39a",
+          "size": "2863965",
           "boards": [
             {"name": "GeoLink OpenTracker"}
           ],
@@ -30,7 +30,7 @@
             {
               "packager": "opentracker",
               "name": "bossac",
-              "version": "1.4-opentracker"
+              "version": "1.5-opentracker"
             }
           ]
         },
@@ -122,35 +122,35 @@
         },
         {
           "name": "bossac",
-          "version": "1.4-opentracker",
+          "version": "1.5-opentracker",
           "systems": [
             {
               "host": "i686-linux-gnu",
-              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.4-opentracker/bossac-1.4-opentracker-i686-linux-gnu.tar.bz2",
-              "archiveFileName": "bossac-1.4-opentracker-i686-linux-gnu.tar.bz2",
-              "checksum": "SHA-256:eea8b72a57097b9a33ae6c88114dc6736f420343b633dc388ffbd199fa8cdea5",
-              "size": "29570"
+              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.5-opentracker/bossac-1.5-opentracker-i686-linux-gnu.tar.gz",
+              "archiveFileName": "bossac-1.5-opentracker-i686-linux-gnu.tar.gz",
+              "checksum": "SHA-256:6b30e914b50aa12c15bee86c2c2e5ee9739d288babbc718956e7d67f52961cb4",
+              "size": "29179"
             },
             {
               "host": "x86_64-pc-linux-gnu",
-              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.4-opentracker/bossac-1.4-opentracker-x86_64-pc-linux-gnu.tar.bz2",
-              "archiveFileName": "bossac-1.4-opentracker-x86_64-pc-linux-gnu.tar.bz2",
-              "checksum": "SHA-256:f87267b2d8f2cb6782c5472609bbcd204eb3306451e2c7e5f48af7dcb2f9225c",
-              "size": "29848"
+              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.5-opentracker/bossac-1.5-opentracker-x86_64-pc-linux-gnu.tar.gz",
+              "archiveFileName": "bossac-1.5-opentracker-x86_64-pc-linux-gnu.tar.gz",
+              "checksum": "SHA-256:ffb581810e0ac37dfa37019544676b44bf3e236cb38c084d5ad23de062292c3c",
+              "size": "29389"
             },
             {
               "host": "i686-mingw32",
-              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.4-opentracker/bossac-1.4-opentracker-i686-mingw32.tar.bz2",
-              "archiveFileName": "bossac-1.4-opentracker-i686-mingw32.tar.bz2",
-              "checksum": "SHA-256:c197ab61cd073e2a41e9ffc608482998616fc0d8db1978e6c2e491858c8bce40",
-              "size": "213711"
+              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.5-opentracker/bossac-1.5-opentracker-x86_64-w64-mingw32.tar.gz",
+              "archiveFileName": "bossac-1.5-opentracker-x86_64-w64-mingw32.tar.gz",
+              "checksum": "SHA-256:d79120c6ac40a6e02843a5ac93e3d289b7b5a4453f2f536f5dd60e364bf11b3c",
+              "size": "218849"
             },
             {
               "host": "i686-apple-darwin10",
-              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.4-opentracker/bossac-1.4-opentracker-i686-apple-darwin10.tar.gz",
-              "archiveFileName": "bossac-1.4-opentracker-i686-apple-darwin10.tar.gz",
-              "checksum": "SHA-256:c15dac7cd8a31ef0c85d5b59282dca8d02d81013409a18f7e7deb83778ac367f",
-              "size": "66743"
+              "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.5-opentracker/bossac-1.5-opentracker-i686-apple-darwin10.tar.gz",
+              "archiveFileName": "bossac-1.5-opentracker-i686-apple-darwin10.tar.gz",
+              "checksum": "SHA-256:2e1d97570edcc6bd57adfff9ab3572b793b8c74d0076ccba99d8cb47ca549bcc",
+              "size": "66626"
             }
           ]
         }

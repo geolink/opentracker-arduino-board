@@ -65,22 +65,6 @@ boolean DueFlashStorage::write(uint32_t address, byte *data, uint32_t dataLength
     _FLASH_DEBUG("Flash write address too high\n");
     return false;
   }
-  
-   _FLASH_DEBUG("FLASH DEBUG\n");
-   _FLASH_DEBUG(IFLASH1_ADDR);
-   _FLASH_DEBUG("\n");
-   _FLASH_DEBUG(IFLASH1_SIZE);
-   _FLASH_DEBUG("\n");
-   
-  // _FLASH_DEBUG(FLASH_START);   
-   _FLASH_DEBUG(address);
-   _FLASH_DEBUG("\n");
-
-   _FLASH_DEBUG(dataLength);
-   _FLASH_DEBUG("\n");
-   
-   
-    
 
 /*
   if (((uint32_t)FLASH_START+address & 3) != 0) {

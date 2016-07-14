@@ -1,12 +1,14 @@
 
-# Arduino SAM Core and platform.
-# ------------------------------
+# OpenTracker SAM Core and platform.
+# ----------------------------------
 #
 # For more info:
 # https://github.com/arduino/Arduino/wiki/Arduino-IDE-1.5-3rd-party-Hardware-specification
 
-name=Arduino ARM (32-bits) Boards
-version=1.6.6
+name=OpenTracker ARM (32-bits) Boards
+version=1.0.3
+
+# Derived from Arduino SAM core 1.6.6
 
 # SAM3 compile variables
 # ----------------------
@@ -93,7 +95,7 @@ recipe.size.regex=\.text\s+([0-9]+).*
 # -------------------
 
 # BOSSA
-tools.bossac.path={runtime.tools.bossac-1.4-opentracker.path}
+tools.bossac.path={runtime.tools.bossac-1.5-opentracker.path}
 tools.bossac.cmd=bossac
 tools.bossac.cmd.windows=bossac.exe
 
@@ -101,7 +103,7 @@ tools.bossac.upload.params.verbose=-i -d
 tools.bossac.upload.params.quiet=
 tools.bossac.upload.pattern="{path}/{cmd}" {upload.verbose} --port={serial.port.file} -U {upload.native_usb} -e -w -v -b "{build.path}/{build.project_name}.bin" -R
 
-tools.bossac_secure.path={runtime.tools.bossac-1.4-opentracker.path}
+tools.bossac_secure.path={runtime.tools.bossac-1.5-opentracker.path}
 tools.bossac_secure.cmd=bossac
 tools.bossac_secure.cmd.windows=bossac.exe
 

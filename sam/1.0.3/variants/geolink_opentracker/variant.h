@@ -219,20 +219,6 @@ static const uint8_t CANTX = 33;
 #define PIN_EXT_SDA     20
 #define PIN_EXT_SCL     21
 #define PIN_WAKE_GSM    23
-#if !defined(OPENTRACKER_HW_REV) || (OPENTRACKER_HW_REV < 0x0240)
-// HW Revision 2.3 (and earlier)
-#define PIN_C_REBOOT    4
-#define PIN_RING_GSM    22
-#define PIN_GSM_VDD_EXT 24
-#else
-// HW Revision 2.4
-// dropped "REBOOT" pin and "GSM VDD" (unused)
-// moved "RING" to wakeup capable pins
-// added "INx_PD" pull-down enable pins, to change analog input range
-#define PIN_RING_GSM    24
-#define PIN_C_IN1_PD    38
-#define PIN_C_IN2_PD    39
-#endif
 #define PIN_C_PWR_GSM   25
 #define PIN_RESET_GPS   26
 #define PIN_STANDBY_GPS 27
@@ -246,8 +232,25 @@ static const uint8_t CANTX = 33;
 #define PIN_EXT_MOSI    35
 #define PIN_EXT_SCK     36
 #define PIN_EXT_NS0     37
+#if !defined(OPENTRACKER_HW_REV) || (OPENTRACKER_HW_REV < 0x0240)
+// HW Revision 2.3 (and earlier)
+#define PIN_C_REBOOT    4
+#define PIN_RING_GSM    22
+#define PIN_GSM_VDD_EXT 24
+#define ANALOG_VREF     3.40
+#define MODEM_VBAT      4.13
+#else
+// HW Revision 2.4
+// dropped "REBOOT" pin and "GSM VDD" (unused)
+// moved "RING" to wakeup capable pins
+// added "INx_PD" pull-down enable pins, to change analog input range
+#define PIN_RING_GSM    24
+#define PIN_C_IN1_PD    38
+#define PIN_C_IN2_PD    39
+#define ANALOG_VREF     3.31
+#define MODEM_VBAT      4.36
+#endif
 
-#define ANALOG_VREF     3.4f
 #define AIN_S_INLEVEL   49
 #define AIN_EXT_IN1     28
 #define AIN_EXT_IN2     29
@@ -282,11 +285,10 @@ extern USARTClass Serial3;
 //
 // SERIAL_PORT_HARDWARE_OPEN  Hardware serial ports which are open for use.  Their RX & TX
 //                            pins are NOT connected to anything by default.
-#define SERIAL_PORT_MONITOR         Serial
+#define SERIAL_PORT_MONITOR         SerialUSB
 #define SERIAL_PORT_USBVIRTUAL      SerialUSB
-#define SERIAL_PORT_HARDWARE_OPEN   Serial1
-#define SERIAL_PORT_HARDWARE_OPEN1  Serial2
-#define SERIAL_PORT_HARDWARE_OPEN2  Serial3
+#define SERIAL_PORT_HARDWARE_OPEN   Serial
+#define SERIAL_PORT_HARDWARE_OPEN1  Serial3
 #define SERIAL_PORT_HARDWARE        Serial
 #define SERIAL_PORT_HARDWARE1       Serial1
 #define SERIAL_PORT_HARDWARE2       Serial2
