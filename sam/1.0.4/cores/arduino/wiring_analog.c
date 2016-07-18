@@ -150,12 +150,12 @@ uint32_t analogRead(uint32_t ulPin)
 		case ADC11 :
 
 			// Enable the corresponding channel
-			if (ulChannel != latestSelectedChannel) {
-				adc_enable_channel( ADC, ulChannel );
-				if ( latestSelectedChannel != (uint32_t)-1 )
-					adc_disable_channel( ADC, latestSelectedChannel );
-				latestSelectedChannel = ulChannel;
+			// Enable the corresponding channel
+			adc_enable_channel( ADC, ulChannel );
+			if (ulChannel != latestSelectedChannel && latestSelectedChannel != (uint32_t)-1 ) {
+				adc_disable_channel( ADC, latestSelectedChannel );
 			}
+			latestSelectedChannel = ulChannel;
 
 			// Start the ADC
 			adc_start( ADC );
@@ -167,7 +167,6 @@ uint32_t analogRead(uint32_t ulPin)
 			// Read the value
 			ulValue = adc_get_latest_value(ADC);
 			ulValue = mapResolution(ulValue, ADC_RESOLUTION, _readResolution);
-
 			break;
 
 		// Compiler could yell because we don't handle DAC pins
