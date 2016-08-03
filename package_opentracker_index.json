@@ -157,9 +157,9 @@
               "size": "29179"
             },
             {
-              "host": "x86_64-pc-linux-gnu",
+              "host": "x86_64-linux-gnu",
               "url": "https://github.com/geolink/opentracker-bossa/releases/download/1.5-opentracker/bossac-1.5-opentracker-x86_64-linux-gnu.tar.gz",
-              "archiveFileName": "bossac-1.5-opentracker-x86_64-pc-linux-gnu.tar.gz",
+              "archiveFileName": "bossac-1.5-opentracker-x86_64-linux-gnu.tar.gz",
               "checksum": "SHA-256:ffb581810e0ac37dfa37019544676b44bf3e236cb38c084d5ad23de062292c3c",
               "size": "29389"
             },
