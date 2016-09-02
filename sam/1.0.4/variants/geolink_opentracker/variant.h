@@ -239,8 +239,9 @@ static const uint8_t CANTX = 33;
 #define PIN_GSM_VDD_EXT 24
 #define ANALOG_VREF     3.40
 #define MODEM_VBAT      4.13
+#define MODEM_M95       1
 #else
-// HW Revision 2.4
+// HW Revision 2.4 (and later)
 // dropped "REBOOT" pin and "GSM VDD" (unused)
 // moved "RING" to wakeup capable pins
 // added "INx_PD" pull-down enable pins, to change analog input range
@@ -249,6 +250,18 @@ static const uint8_t CANTX = 33;
 #define PIN_C_IN2_PD    39
 #define ANALOG_VREF     3.31
 #define MODEM_VBAT      4.36
+#if (OPENTRACKER_HW_REV == 0x0250)
+#define MODEM_UG96      1
+#else
+#define MODEM_M95       1
+#endif
+#endif
+
+#ifndef MODEM_UG96
+#define MODEM_UG96      0
+#endif
+#ifndef MODEM_M95
+#define MODEM_M95       0
 #endif
 
 #define AIN_S_INLEVEL   49
