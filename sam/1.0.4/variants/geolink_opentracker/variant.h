@@ -137,7 +137,7 @@ static const uint8_t SCK  = PIN_SPI_SCK;
 // Serial2
 #define PINS_USART1          (43u)
 // Serial3
-#define PINS_USART3          (44u)
+#define PINS_USART2          (44u)
 
 /*
  * USB Interfaces

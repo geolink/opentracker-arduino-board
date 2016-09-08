@@ -352,10 +352,10 @@ void init( void )
     g_APinDescription[PINS_USART1].ulPin,
     g_APinDescription[PINS_USART1].ulPinConfiguration);
   PIO_Configure(
-    g_APinDescription[PINS_USART3].pPort,
-    g_APinDescription[PINS_USART3].ulPinType,
-    g_APinDescription[PINS_USART3].ulPin,
-    g_APinDescription[PINS_USART3].ulPinConfiguration);
+    g_APinDescription[PINS_USART2].pPort,
+    g_APinDescription[PINS_USART2].ulPinType,
+    g_APinDescription[PINS_USART2].ulPin,
+    g_APinDescription[PINS_USART2].ulPinConfiguration);
 
   // Initialize USB pins
   PIO_Configure(
