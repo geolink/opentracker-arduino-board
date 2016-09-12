@@ -14,10 +14,10 @@
           "architecture": "sam",
           "version": "1.0.4",
           "category": "Contributed",
-          "url": "https://github.com/geolink/opentracker-arduino-board/releases/download/v1.0.3/sam-1.6.6-opentracker-1.0.3.tar.bz2",
-          "archiveFileName": "sam-1.6.6-opentracker-1.0.3.tar.bz2",
-          "checksum": "SHA-256:c6522d614bca3f67e407347be7704a750f4aa85a2d1226278f0e3c391e87b39a",
-          "size": "2863965",
+          "url": "https://github.com/geolink/opentracker-arduino-board/releases/download/v1.0.4/sam-1.6.6-opentracker-1.0.4.tar.bz2",
+          "archiveFileName": "sam-1.6.6-opentracker-1.0.4.tar.bz2",
+          "checksum": "SHA-256:2099797bfab70704ca5a81774dbe3f6208332228a52a2d8f74903b40034a32ee",
+          "size": "2863564",
           "boards": [
             {"name": "GeoLink OpenTracker"}
           ],
