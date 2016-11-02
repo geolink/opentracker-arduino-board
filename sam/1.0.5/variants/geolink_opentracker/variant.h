@@ -249,10 +249,11 @@ static const uint8_t CANTX = 33;
 #define PIN_C_IN1_PD    38
 #define PIN_C_IN2_PD    39
 #define ANALOG_VREF     3.31
-#define MODEM_VBAT      4.36
 #if (OPENTRACKER_HW_REV == 0x0250)
+#define MODEM_VBAT      4.10
 #define MODEM_UG96      1
 #else
+#define MODEM_VBAT      4.36
 #define MODEM_M95       1
 #endif
 #endif
