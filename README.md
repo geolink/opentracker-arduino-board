@@ -1,6 +1,6 @@
 #OpenTracker - Arduino Boards Manager
 
-Works with Arduino IDEs version 1.6.x and later (tested with 1.6.4)
+Works with Arduino IDEs version 1.6.x and later (tested up to 1.6.13)
 
 Open the menu "File" > "Preferences" and add the following text to the box "Additional Boards Manager URLs":
 https://raw.githubusercontent.com/geolink/opentracker-arduino-board/master/package_opentracker_index.json
