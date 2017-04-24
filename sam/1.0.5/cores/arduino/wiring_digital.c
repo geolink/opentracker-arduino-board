@@ -22,14 +22,27 @@
  extern "C" {
 #endif
 
-extern uint8_t pinEnabled[PINS_COUNT];
-
 extern void pinMode( uint32_t ulPin, uint32_t ulMode )
 {
 	if ( g_APinDescription[ulPin].ulPinType == PIO_NOT_A_PIN )
     {
         return ;
     }
+
+  if ((g_pinStatus[ulPin] & 0xF) == PIN_STATUS_ANALOG)
+    {
+      adc_disable_channel( ADC, g_APinDescription[ulPin].ulADCChannelNumber);
+    }
+
+  if ((g_pinStatus[ulPin] & 0xF) < PIN_STATUS_DIGITAL_OUTPUT && g_pinStatus[ulPin] != 0)
+    {
+      // return if already configured in the right way
+      if (((g_pinStatus[ulPin] & 0xF) == PIN_STATUS_DIGITAL_INPUT && ulMode == INPUT) ||
+          ((g_pinStatus[ulPin] & 0xF) == PIN_STATUS_DIGITAL_INPUT_PULLUP && ulMode == INPUT_PULLUP) ||
+          ((g_pinStatus[ulPin] & 0xF) == PIN_STATUS_DIGITAL_OUTPUT && ulMode == OUTPUT))
+      return;
+    }
+
 	switch ( ulMode )
     {
         case INPUT:
@@ -40,7 +53,7 @@ extern void pinMode( uint32_t ulPin, uint32_t ulMode )
             	PIO_INPUT,
             	g_APinDescription[ulPin].ulPin,
             	0 ) ;
-            pinEnabled[ulPin] = 0;
+            g_pinStatus[ulPin] = (g_pinStatus[ulPin] & 0xF0) | PIN_STATUS_DIGITAL_INPUT;
         break ;
 
         case INPUT_PULLUP:
@@ -51,16 +64,17 @@ extern void pinMode( uint32_t ulPin, uint32_t ulMode )
             	PIO_INPUT,
             	g_APinDescription[ulPin].ulPin,
             	PIO_PULLUP ) ;
-            pinEnabled[ulPin] = 0;
+            g_pinStatus[ulPin] = (g_pinStatus[ulPin] & 0xF0) | PIN_STATUS_DIGITAL_INPUT_PULLUP;
         break ;
 
         case OUTPUT:
             PIO_Configure(
             	g_APinDescription[ulPin].pPort,
-            	PIO_OUTPUT_1,
+              (g_pinStatus[ulPin] & 0xF0) >> 4 ? PIO_OUTPUT_1 : PIO_OUTPUT_0,
             	g_APinDescription[ulPin].ulPin,
             	g_APinDescription[ulPin].ulPinConfiguration ) ;
-            pinEnabled[ulPin] = 0;
+
+            g_pinStatus[ulPin] = (g_pinStatus[ulPin] & 0xF0) | PIN_STATUS_DIGITAL_OUTPUT;
 
             /* if all pins are output, disable PIO Controller clocking, reduce power consumption */
             if ( g_APinDescription[ulPin].pPort->PIO_OSR == 0xffffffff )
@@ -72,10 +86,6 @@ extern void pinMode( uint32_t ulPin, uint32_t ulMode )
         default:
         break ;
     }
-	if ( g_APinDescription[ulPin].ulADCChannelNumber != NO_ADC )
-    {
-        adc_disable_channel(ADC, g_APinDescription[ulPin].ulADCChannelNumber);
-    }
 }
 
 extern void digitalWrite( uint32_t ulPin, uint32_t ulVal )
@@ -85,6 +95,12 @@ extern void digitalWrite( uint32_t ulPin, uint32_t ulVal )
   {
     return ;
   }
+
+  if ((g_pinStatus[ulPin] & 0xF) == PIN_STATUS_PWM) {
+    pinMode(ulPin, OUTPUT);
+  }
+
+  g_pinStatus[ulPin] = (g_pinStatus[ulPin] & 0x0F) | (ulVal << 4) ;
 
   if ( PIO_GetOutputDataStatus( g_APinDescription[ulPin].pPort, g_APinDescription[ulPin].ulPin ) == 0 )
   {
@@ -98,6 +114,14 @@ extern void digitalWrite( uint32_t ulPin, uint32_t ulVal )
 
 extern int digitalRead( uint32_t ulPin )
 {
+  if ((g_pinStatus[ulPin] & 0xF) == PIN_STATUS_DIGITAL_OUTPUT) {
+    return (g_pinStatus[ulPin] & 0xF0) >> 4;
+  }
+
+  if ((g_pinStatus[ulPin] & 0xF) == PIN_STATUS_ANALOG) {
+    pinMode(ulPin, INPUT);
+  }
+
 	if ( g_APinDescription[ulPin].ulPinType == PIO_NOT_A_PIN )
     {
         return LOW ;

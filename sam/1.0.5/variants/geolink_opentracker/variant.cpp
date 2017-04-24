@@ -145,7 +145,7 @@ extern const PinDescription g_APinDescription[]=
   // 13 - AMBER LED
   { PIOB, PIO_PB27B_TIOB0,   ID_PIOB, PIO_PERIPH_B, PIO_DEFAULT, (PIN_ATTR_DIGITAL|PIN_ATTR_TIMER), NO_ADC, NO_ADC, NOT_ON_PWM,  TC0_CHB0     }, // TIOB0
 
-  // 14/15 - USART3 (Serial3)
+  // 14/15 - USART2 (Serial3)
   { PIOB, PIO_PB20A_TXD2,    ID_PIOB, PIO_PERIPH_B, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // TXD2
   { PIOB, PIO_PB21A_RXD2,    ID_PIOB, PIO_PERIPH_B, PIO_DEFAULT, PIN_ATTR_DIGITAL,                  NO_ADC, NO_ADC, NOT_ON_PWM,  NOT_ON_TIMER }, // RXD2
 
@@ -228,6 +228,9 @@ extern const PinDescription g_APinDescription[]=
   // END
   { NULL, 0, 0, PIO_NOT_A_PIN, PIO_DEFAULT, 0, NO_ADC, NO_ADC, NOT_ON_PWM, NOT_ON_TIMER }
 } ;
+
+
+uint8_t g_pinStatus[PINS_COUNT] = {0};
 
 #ifdef __cplusplus
 }

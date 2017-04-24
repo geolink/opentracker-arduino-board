@@ -55,6 +55,8 @@ static volatile LineInfo _usbLineInfo = {
     0x00   // lineState
 };
 
+static volatile int32_t breakValue = -1;
+
 _Pragma("pack(1)")
 static const CDCDescriptor _cdcInterface =
 {
@@ -141,6 +143,12 @@ bool WEAK CDC_Setup(USBSetup& setup)
 			}
 			return true;
 		}
+
+		if (CDC_SEND_BREAK == r)
+		{
+			breakValue = ((uint16_t)setup.wValueH << 8) | setup.wValueL;
+			return true;
+		}
 	}
 	return false;
 }
@@ -208,6 +216,13 @@ int Serial_::available(void)
 	
 	ring_buffer *buffer = &cdc_rx_buffer;
 	return (unsigned int)(CDC_SERIAL_BUFFER_SIZE + buffer->head - buffer->tail) % CDC_SERIAL_BUFFER_SIZE;
+}
+
+int Serial_::availableForWrite(void)
+{
+	// return the number of bytes left in the current bank,
+	// always EP size - 1, because bank is flushed on every write
+	return (EPX_SIZE - 1);
 }
 
 int Serial_::peek(void)
@@ -310,6 +325,27 @@ Serial_::operator bool()
 
 	delay(10);
 	return result;
+}
+
+int32_t Serial_::readBreak() {
+	uint8_t enableInterrupts = ((__get_PRIMASK() & 0x1) == 0 && (__get_FAULTMASK() & 0x1) == 0);
+
+	// disable interrupts,
+	// to avoid clearing a breakValue that might occur 
+	// while processing the current break value
+	__disable_irq();
+
+	int ret = breakValue;
+
+	breakValue = -1;
+
+	if (enableInterrupts)
+	{
+		// re-enable the interrupts
+		__enable_irq();
+	}
+
+	return ret;
 }
 
 unsigned long Serial_::baud() {
