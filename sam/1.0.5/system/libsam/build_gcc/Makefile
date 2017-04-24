@@ -127,21 +127,26 @@ libsam_sam3a4c_gcc_rel.a:
 .PHONY: clean
 clean:
 	@echo ------------------------------------------------------------------------------------
-	@echo --- Cleaning sam3s4c release and debug
-	@$(MAKE) CHIP=__SAM3S4C__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
-	@$(MAKE) CHIP=__SAM3S4C__ DEBUG=1 $(SUBMAKE_OPTIONS) -f sam3.mk $@
+#	@echo --- Cleaning sam3s4c release and debug
+#	@$(MAKE) CHIP=__SAM3S4C__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
+#	@$(MAKE) CHIP=__SAM3S4C__ DEBUG=1 $(SUBMAKE_OPTIONS) -f sam3.mk $@
 
-	@echo --- Cleaning sam3u4e release and debug
-	@$(MAKE) CHIP=__SAM3U4E__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
-	@$(MAKE) CHIP=__SAM3U4E__ DEBUG=1 $(SUBMAKE_OPTIONS) -f sam3.mk $@
+#	@echo --- Cleaning sam3u4e release and debug
+#	@$(MAKE) CHIP=__SAM3U4E__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
+#	@$(MAKE) CHIP=__SAM3U4E__ DEBUG=1 $(SUBMAKE_OPTIONS) -f sam3.mk $@
 
-	@echo --- Cleaning sam3x8e release and debug
-	@$(MAKE) CHIP=__SAM3X8E__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
-	@$(MAKE) CHIP=__SAM3X8E__ DEBUG=1 $(SUBMAKE_OPTIONS) -f sam3.mk $@
+#	@echo --- Cleaning sam3x8e release and debug
+#	@$(MAKE) CHIP=__SAM3X8E__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
+#	@$(MAKE) CHIP=__SAM3X8E__ DEBUG=1 $(SUBMAKE_OPTIONS) -f sam3.mk $@
 
-	@echo --- Cleaning sam3x8h release and debug
-	@$(MAKE) CHIP=__SAM3X8H__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
-	@$(MAKE) CHIP=__SAM3X8H__ DEBUG=1 $(SUBMAKE_OPTIONS) -f sam3.mk $@
+#	@echo --- Cleaning sam3x8h release and debug
+#	@$(MAKE) CHIP=__SAM3X8H__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
+#	@$(MAKE) CHIP=__SAM3X8H__ DEBUG=1 $(SUBMAKE_OPTIONS) -f sam3.mk $@
+
+	@echo --- Cleaning geolink_opentracker release
+	@$(MAKE) CHIP=__SAM3A4C__ $(SUBMAKE_OPTIONS) OUTPUT_BIN=../../../variants/geolink_opentracker -f sam3.mk
+
+	@echo --- Cleaning sam3a4c release
+	@$(MAKE) CHIP=__SAM3A4C__ $(SUBMAKE_OPTIONS) -f sam3.mk $@
 	@echo ------------------------------------------------------------------------------------
-
 

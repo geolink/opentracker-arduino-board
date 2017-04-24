@@ -24,12 +24,8 @@ AR = $(CROSS_COMPILE)ar
 CC = $(CROSS_COMPILE)gcc
 AS = $(CROSS_COMPILE)as
 NM = $(CROSS_COMPILE)nm
-ifeq ($(OS),Windows_NT)
-RM=cs-rm -Rf
-#RM=del /s /f
-else
+
 RM=rm -Rf
-endif
 
 SEP=/
 

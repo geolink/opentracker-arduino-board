@@ -25,13 +25,10 @@ CC = $(CROSS_COMPILE)gcc
 CXX = $(CROSS_COMPILE)g++
 AS = $(CROSS_COMPILE)as
 NM = $(CROSS_COMPILE)nm
-ifeq ($(OS),Windows_NT)
-RM=cs-rm -Rf
-else
-RM=rm -Rf
-endif
 
-SEP=\\
+RM=rm -Rf
+
+SEP=/
 
 # ---------------------------------------------------------------------------------------
 # C Flags

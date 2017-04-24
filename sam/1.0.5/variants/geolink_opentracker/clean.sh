@@ -3,8 +3,8 @@ export ARM_GCC_TOOLCHAIN=$LOCALAPPDATA/Arduino15/packages/arduino/tools/arm-none
 
 # build libsam
 cd ../../system/libsam/build_gcc/
-mingw32-make
+mingw32-make clean
 
 # test build variant
 cd ../../../variants/geolink_opentracker/build_gcc/
-mingw32-make
+mingw32-make clean
