@@ -26,8 +26,8 @@ geolink_opentracker.build.pid=0x003e
 ## Menu Additions
 
 menu.HWVersion=Board Version
-geolink_opentracker.menu.HWVersion.ver_2_5=OpenTracker 2.5 (3G)
-geolink_opentracker.menu.HWVersion.ver_2_5.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags} -DOPENTRACKER_HW_REV=0x0250
+geolink_opentracker.menu.HWVersion.ver_2_4_3G=OpenTracker 2.4 (3G)
+geolink_opentracker.menu.HWVersion.ver_2_4_3G.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags} -DOPENTRACKER_HW_REV=0x024A
 geolink_opentracker.menu.HWVersion.ver_2_4=OpenTracker 2.4
 geolink_opentracker.menu.HWVersion.ver_2_4.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags} -DOPENTRACKER_HW_REV=0x0240
 geolink_opentracker.menu.HWVersion.ver_2_3=OpenTracker 2.3
