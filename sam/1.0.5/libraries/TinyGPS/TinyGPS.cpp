@@ -191,7 +191,6 @@ bool TinyGPS::term_complete()
           break;
         case _GPS_SENTENCE_GPGGA:
           _altitude  = _new_altitude;
-          _time      = _new_time;
           _latitude  = _new_latitude;
           _longitude = _new_longitude;
           _numsats   = _new_numsats;
@@ -228,7 +227,6 @@ bool TinyGPS::term_complete()
     switch(COMBINE(_sentence_type, _term_number))
   {
     case COMBINE(_GPS_SENTENCE_GPRMC, 1): // Time in both sentences
-    case COMBINE(_GPS_SENTENCE_GPGGA, 1):
       _new_time = parse_decimal();
       _new_time_fix = millis();
       break;
