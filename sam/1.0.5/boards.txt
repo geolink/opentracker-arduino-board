@@ -1,0 +1,40 @@
+
+geolink_opentracker.name=Geolink OpenTracker
+geolink_opentracker.vid.0=0x2341
+geolink_opentracker.pid.0=0x003e
+geolink_opentracker.vid.1=0x2a03
+geolink_opentracker.pid.1=0x003e
+geolink_opentracker.upload.tool=bossac
+geolink_opentracker.upload.protocol=sam-ba
+geolink_opentracker.upload.maximum_size=131072
+geolink_opentracker.upload.use_1200bps_touch=true
+geolink_opentracker.upload.wait_for_upload_port=true
+geolink_opentracker.upload.native_usb=true
+geolink_opentracker.build.mcu=cortex-m3
+geolink_opentracker.build.f_cpu=84000000L
+geolink_opentracker.build.usb_product="Geolink OpenTracker"
+geolink_opentracker.build.board=SAM_DUE
+geolink_opentracker.build.core=arduino
+geolink_opentracker.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags}
+geolink_opentracker.build.ldscript=linker_scripts/gcc/flash.ld
+geolink_opentracker.build.variant=geolink_opentracker
+geolink_opentracker.build.variant_system_lib=libsam_sam3a4c_gcc_rel.a
+geolink_opentracker.build.vid=0x2341
+geolink_opentracker.build.pid=0x003e
+
+
+## Menu Additions
+
+menu.HWVersion=Board Version
+geolink_opentracker.menu.HWVersion.ver_2_4_3G=OpenTracker 2.4 (3G)
+geolink_opentracker.menu.HWVersion.ver_2_4_3G.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags} -DOPENTRACKER_HW_REV=0x024A
+geolink_opentracker.menu.HWVersion.ver_2_4=OpenTracker 2.4
+geolink_opentracker.menu.HWVersion.ver_2_4.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags} -DOPENTRACKER_HW_REV=0x0240
+geolink_opentracker.menu.HWVersion.ver_2_3=OpenTracker 2.3
+geolink_opentracker.menu.HWVersion.ver_2_3.build.extra_flags=-D__SAM3A4C__ -mthumb {build.usb_flags} -DOPENTRACKER_HW_REV=0x0230
+
+menu.SecureBit=Flash Security
+geolink_opentracker.menu.SecureBit.disabled=Unlocked
+geolink_opentracker.menu.SecureBit.disabled.upload.tool=bossac
+geolink_opentracker.menu.SecureBit.enabled=SecureBit
+geolink_opentracker.menu.SecureBit.enabled.upload.tool=bossac_secure
